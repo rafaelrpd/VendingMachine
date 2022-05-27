@@ -14,6 +14,8 @@ namespace VendingMachine
             bool exit = false;
             while(!exit)
             {
+                // Todo: remove gibberish
+
                 //Console.WriteLine();
                 //Console.WriteLine("This is all coins that this Vending Machine accept as payment.");
                 //vendingMachine.ListAllCoins().ForEach(coin => { Console.Write($"{coin._value} "); });
@@ -23,11 +25,11 @@ namespace VendingMachine
 
                 printMenu(vendingMachine.ListAllProducts());
                 sellProduct(vendingMachine);
-                exit = true;
+                exit = true; // Todo: Need to put this "exit" thing like a switch case.
             }
         }
 
-        private static void sellProduct(Machine vendingMachine)
+        private static void sellProduct(Machine vendingMachine) // Todo: Maybe recursion on this thing?
         {
             int userProductIdSelection = 0;
             int userQuantitySelection = 0;

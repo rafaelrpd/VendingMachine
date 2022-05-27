@@ -14,7 +14,7 @@
             _name = name;
             _price = price;
             _quantity = quantity;
-            _currency = currency;
+            _currency = currency; // Refactoring: Remove and use standard formatting.
         }
     }
 }

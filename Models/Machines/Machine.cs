@@ -1,6 +1,5 @@
 ﻿using VendingMachine.Models.Money;
 using VendingMachine.Models.Products;
-using System.Linq;
 
 namespace VendingMachine.Models.Machines
 {
@@ -27,7 +26,7 @@ namespace VendingMachine.Models.Machines
 
         public (string, float) ProductCost(List<Product> products, int userSelectionId, int userQuantitySelection)
         {
-
+            // Refactoring : WTF is this, brooooooooooo
             return (products.Where(product => product._id == userSelectionId).ToList()[0]._currency, products.Where(product => product._id == userSelectionId).ToList()[0]._price * userQuantitySelection);
         }
 
@@ -38,6 +37,7 @@ namespace VendingMachine.Models.Machines
 
         public void SellProduct(int userSelectionId, int userQuantitySelection)
         {
+            // Refactoring : WTF is this, brooooooooooo
             products.Where(product => product._id == userSelectionId).ToList()[0]._quantity -= userQuantitySelection;
         }
 
@@ -55,7 +55,7 @@ namespace VendingMachine.Models.Machines
 
         public void ChangeProductPrice(int productId, float oldProductPrice, float newProductPrice)
         {
-            // Todo: Trocar o preço dos produtos
+            // Todo: Change prices
         }
 
         public List<Product> ListAllProducts()
@@ -74,7 +74,7 @@ namespace VendingMachine.Models.Machines
         public Machine()
         {
             products = new List<Product>();
-            balance = 30f;
+            balance = 0;
             coins = new List<Coin>();
             cashBill = new List<Cash>();
         }
