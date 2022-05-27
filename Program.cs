@@ -40,7 +40,7 @@ namespace VendingMachine
             int.TryParse(Console.ReadLine(), out userProductIdSelection);
             Console.WriteLine("Nice choise! How many do you want?");
             int.TryParse(Console.ReadLine(), out userQuantitySelection);
-            (currency, totalCost) = vendingMachine.ProductCost(vendingMachine.ListAllProducts(), userProductIdSelection, userQuantitySelection);
+            (currency, totalCost) = vendingMachine.ProductCost(userProductIdSelection, userQuantitySelection);
             Console.WriteLine($"Will cost {currency}{totalCost * userQuantitySelection:0.00}.");
             Console.WriteLine($"You balance is: {vendingMachine.ShowBalance():0.00}");
 

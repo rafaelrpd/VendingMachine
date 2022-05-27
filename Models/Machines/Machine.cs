@@ -24,7 +24,7 @@ namespace VendingMachine.Models.Machines
             cashBill.Add(cash);
         }
 
-        public (string, float) ProductCost(List<Product> products, int userSelectionId, int userQuantitySelection)
+        public (string, float) ProductCost(int userSelectionId, int userQuantitySelection)
         {
             // Refactoring : WTF is this, brooooooooooo
             return (products.Where(product => product._id == userSelectionId).ToList()[0]._currency, products.Where(product => product._id == userSelectionId).ToList()[0]._price * userQuantitySelection);
