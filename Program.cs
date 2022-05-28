@@ -25,7 +25,6 @@ namespace VendingMachine
                         vendingMachine.ShowMenu();
                         break;
                     case 2:
-                        // Todo: buy item
                         vendingMachine.SellItem();
                         Console.Clear();
                         vendingMachine.ShowMenu();
