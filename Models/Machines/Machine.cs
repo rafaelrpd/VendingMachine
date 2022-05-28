@@ -38,7 +38,7 @@ namespace VendingMachine.Models.Machines
             ListAllProducts();
             ShowBalance();
             Console.WriteLine("What you want to do?");
-            Console.WriteLine($"1 - Add money\n2 - Buy item\n3 - End Session and get change");
+            Console.WriteLine($"1 - Add money\n2 - Buy item\n3 - Get change\n4 - Exit");
             Console.WriteLine();
         }
 
@@ -117,6 +117,47 @@ namespace VendingMachine.Models.Machines
                 Console.WriteLine();
             }
 
+        }
+
+        public void GiveChange()
+        {
+            Console.Clear();
+            Console.WriteLine("You don't need change! The change is mmmiiiinnneee!!!");
+            Console.WriteLine("Muhuahuahua");
+            Console.WriteLine("#ImEvil");
+            Console.WriteLine("You don't need change, right?");
+            Console.WriteLine("Right? ...");
+            Console.WriteLine("Come on! You know how's this days! I need to feed my family!");
+            Console.WriteLine("Fine... fine...");
+            Console.WriteLine($"You have {Balance:C2}.");
+            Console.WriteLine("At least give me a tip!");
+            Console.WriteLine();
+            Console.WriteLine();
+            Console.Write("Do you want to give a tip? Y/N ");
+            string _userSelection = Console.ReadLine().ToLower();
+            Console.WriteLine();
+            if (_userSelection == "y")
+            {
+                Console.WriteLine("How much you will tip?");
+                float.TryParse(Console.ReadLine(), out float _userTip);
+                Console.WriteLine($"You tipped the machine for {_userTip:C2}");
+                Console.WriteLine($"Your balance is now {(Balance - _userTip):C2}.");
+                Balance -= _userTip;
+                Console.WriteLine();
+                Console.WriteLine("Processing change...");
+                Console.WriteLine("It's lege... wait for it... dary!");
+                Console.WriteLine($"You got back all your money! {Balance:C2}.");
+                Thread.Sleep(5000);
+                Balance = 0;
+            }
+            else
+            {
+                Console.WriteLine("Processing change...");
+                Console.WriteLine("It's lege... wait for it... dary!");
+                Console.WriteLine($"You got back all your money! {Balance:C2}.");
+                Thread.Sleep(5000);
+                Balance = 0;
+            }
         }
 
         private void ShowBalance()
