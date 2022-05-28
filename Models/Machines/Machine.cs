@@ -64,8 +64,9 @@ namespace VendingMachine.Models.Machines
             Console.WriteLine();
             ShowBalance();
             Console.WriteLine();
-            Console.Write("Do you want to deposit more? Y/N");
+            Console.Write("Do you want to deposit more? Y/N ");
             string _moreDeposits = Console.ReadLine().ToLower();
+            Console.WriteLine();
             if (_moreDeposits == "y")
             {
                 AddMoney();
@@ -86,6 +87,7 @@ namespace VendingMachine.Models.Machines
                 Console.WriteLine();
                 SellMenuShowCounter++;
             }
+            ShowBalance();
             Console.WriteLine("This is my product list.");
             Console.WriteLine();
             ListAllProducts();
@@ -95,7 +97,25 @@ namespace VendingMachine.Models.Machines
             Console.Write("How many? ");
             int.TryParse(Console.ReadLine(), out int _productQuantity);
             Console.WriteLine();
-            Console.WriteLine("You're");
+            Console.WriteLine("You're buying this: ");
+            Console.WriteLine("{0,-3} {1,-20} {2,-10} {3,-10}", "ID", "Name", "Price", "Quantity");
+            Console.WriteLine("{0,-3} {1,-20} {2,-10:C2} {3,-10}", Products[_productId - 1]._id, Products[_productId - 1]._name, Products[_productId - 1]._price, _productQuantity);
+            Console.WriteLine($"Total : {(Products[_productId - 1]._price * _productQuantity):C2}");
+            Console.WriteLine();
+            Products[_productId - 1]._quantity -= _productQuantity;
+            Balance -= (Products[_productId - 1]._price * _productQuantity);
+            Console.Write("Do you want to buy more? Y/N ");
+            string _buyMore = Console.ReadLine().ToLower();
+            Console.WriteLine();
+            if (_buyMore == "y")
+            {
+                SellItem();
+            }
+            else if (_buyMore != "y")
+            {
+                Console.WriteLine("Let's go back to Menu!!!");
+                Console.WriteLine();
+            }
 
         }
 
