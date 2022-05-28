@@ -30,11 +30,13 @@ namespace VendingMachine
                         vendingMachine.ShowMenu();
                         break;
                     case 3:
-                        exit = true;
-                        // Todo: close program and give change
+                        vendingMachine.GiveChange();
+                        Console.Clear();
+                        vendingMachine.ShowMenu();
                         break;
                     default:
-                        exit = false;
+                        exit = true;
+                        vendingMachine.GiveChange();
                         break;
                 }
             }
