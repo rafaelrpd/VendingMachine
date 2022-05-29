@@ -26,28 +26,27 @@ namespace VendingMachine.Models.Machines
             Balance += value;
         }
         
-        public void UpdateProductQuantity(int id, int quantity)
+        public void SellItem(int index)
         {
-            // Todo: Ask cody, which exceptions to use and how.
-            if (Products[id - 1] == null)
+            if (Products.ElementAtOrDefault(index) == null)
             {
-                throw new IndexOutOfRangeException("ID choosed doesn't exist.");
+                throw new IndexOutOfRangeException("Index choosed doesn't exist.");
             }
-            //if (quantity <= 0 || (quantity - Products[id - 1].Quantity) < 0)
-            //{
-            //    throw new ArgumentOutOfRangeException("Quantity informed above maximum available", "quantity");
-            //}
-            Products[id - 1].Quantity -= quantity;
+            Products[index].Quantity -= 1;
+            if (Products[index].Quantity <= 0)
+            {
+                Products.RemoveAt(index);
+            }
         }
 
         private void SetupMachine()
         {
             // Add first products
-            Products.Add(new Product(1, "rice 10kg", 25.50f, 10));
-            Products.Add(new Product(2, "beans 1kg", 7.00f, 10));
-            Products.Add(new Product(3, "pasta 1kg", 5.00f, 10));
-            Products.Add(new Product(4, "soda can 250ml", 4.25f, 10));
-            Products.Add(new Product(5, "coke 350ml", 5.50f, 10));
+            Products.Add(new Product("rice 10kg", 25.50f, 1));
+            Products.Add(new Product("beans 1kg", 7.00f, 10));
+            Products.Add(new Product("pasta 1kg", 5.00f, 10));
+            Products.Add(new Product("soda can 250ml", 4.25f, 10));
+            Products.Add(new Product("coke 350ml", 5.50f, 10));
 
             // Add all coins and cash notes possible as payment
             IMoney[] coinArray = { new Coin(0.25f), new Coin(0.50f), new Coin(1.00f), new Coin(2.00f) };
