@@ -187,11 +187,11 @@ namespace VendingMachine.Models.Machines
         private void SetupMachine()
         {
             // Add first products
-            Products.Add(new Product(1, "rice 10kg", 25.50f, 10, "R$"));
-            Products.Add(new Product(2, "beans 1kg", 7.00f, 10, "R$"));
-            Products.Add(new Product(3, "pasta 1kg", 5.00f, 10, "R$"));
-            Products.Add(new Product(4, "soda can 250ml", 4.25f, 10, "R$"));
-            Products.Add(new Product(5, "coke 350ml", 5.50f, 10, "R$"));
+            Products.Add(new Product(1, "rice 10kg", 25.50f, 10));
+            Products.Add(new Product(2, "beans 1kg", 7.00f, 10));
+            Products.Add(new Product(3, "pasta 1kg", 5.00f, 10));
+            Products.Add(new Product(4, "soda can 250ml", 4.25f, 10));
+            Products.Add(new Product(5, "coke 350ml", 5.50f, 10));
 
             // Add all coins and cash notes possible as payment
             IMoney[] coinArray = { new Coin(0.25f), new Coin(0.50f), new Coin(1.00f), new Coin(2.00f) };
