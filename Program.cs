@@ -105,7 +105,7 @@ namespace VendingMachine
             }
             Console.Write("How much you want do deposit? ");
             float.TryParse(Console.ReadLine(), out float _userDepositValue);
-            vendingMachine.Balance += _userDepositValue;
+            vendingMachine.UpdateBalance(_userDepositValue);
             Console.WriteLine();
             Console.WriteLine("--------------------------------------------------------");
             Console.WriteLine($"Current balance: {vendingMachine.Balance:C2}");
@@ -151,7 +151,7 @@ namespace VendingMachine
             Console.WriteLine($"Total : {(vendingMachine.Products[_productId - 1].Price * _productQuantity):C2}");
             Console.WriteLine();
             vendingMachine.Products[_productId - 1].Quantity -= _productQuantity;
-            vendingMachine.Balance -= (vendingMachine.Products[_productId - 1].Price * _productQuantity);
+            vendingMachine.UpdateBalance(-(vendingMachine.Products[_productId - 1].Price * _productQuantity));
             Console.Write("Do you want to buy more? Y/N ");
             string _buyMore = Console.ReadLine().ToLower();
             Console.WriteLine();
@@ -190,13 +190,13 @@ namespace VendingMachine
                 float.TryParse(Console.ReadLine(), out float _userTip);
                 Console.WriteLine($"You tipped the machine for {_userTip:C2}");
                 Console.WriteLine($"Your balance is now {(vendingMachine.Balance - _userTip):C2}.");
-                vendingMachine.Balance -= _userTip;
+                vendingMachine.UpdateBalance(-_userTip);
                 Console.WriteLine();
                 Console.WriteLine("Processing change...");
                 Console.WriteLine("It's legen... wait for it... dary!");
                 Console.WriteLine($"You got back all your money! {vendingMachine.Balance:C2}.");
                 Thread.Sleep(5000);
-                vendingMachine.Balance = 0;
+                vendingMachine.UpdateBalance(-vendingMachine.Balance);
             }
             else
             {
@@ -204,7 +204,7 @@ namespace VendingMachine
                 Console.WriteLine("It's legen... wait for it... dary!");
                 Console.WriteLine($"You got back all your money! {vendingMachine.Balance:C2}.");
                 Thread.Sleep(5000);
-                vendingMachine.Balance = 0;
+                vendingMachine.UpdateBalance(-vendingMachine.Balance);
             }
         }
     }

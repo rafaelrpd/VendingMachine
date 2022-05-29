@@ -5,9 +5,9 @@ namespace VendingMachine.Models.Machines
 {
     internal class Machine
     {
-        public List<Product> Products { get; set; }
-        public float Balance { get; set; }
-        public List<IMoney> Money { get; set; }
+        public List<Product> Products { get; private set; }
+        public float Balance { get; private set; }
+        public List<IMoney> Money { get; private set; }
 
         public Machine()
         {
@@ -17,6 +17,10 @@ namespace VendingMachine.Models.Machines
             SetupMachine();
         }
 
+        public void UpdateBalance(float value)
+        {
+            Balance += value;
+        }
         private void SetupMachine()
         {
             // Add first products
