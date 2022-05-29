@@ -53,7 +53,12 @@ namespace VendingMachine
         public static void ListAllProducts(Machine vendingMachine)
         {
             Console.WriteLine("{0,-3} {1,-20} {2,-10} {3,-10}", "ID", "Name", "Price", "Quantity");
-            vendingMachine.Products.ForEach(product => Console.WriteLine("{0,-3} {1,-20} {2,-10:C2} {3,-10}", product.Id, product.Name, product.Price, product.Quantity));
+            int productIndex = 0;
+            foreach (var product in vendingMachine.Products)
+            {
+                Console.WriteLine("{0,-3} {1,-20} {2,-10:C2} {3,-10}", (productIndex + 1), product.Name, product.Price, product.Quantity);
+                productIndex++;
+            }
             Console.WriteLine();
         }
         public static void ShowBalance(Machine vendingMachine)
@@ -111,35 +116,25 @@ namespace VendingMachine
             Console.WriteLine("This is my product list.");
             Console.WriteLine();
             Console.WriteLine("{0,-3} {1,-20} {2,-10} {3,-10}", "ID", "Name", "Price", "Quantity");
-            vendingMachine.Products.ForEach(product => Console.WriteLine("{0,-3} {1,-20} {2,-10:C2} {3,-10}", product.Id, product.Name, product.Price, product.Quantity));
-
+            int productIndex = 0;
+            foreach (var product in vendingMachine.Products)
+            {
+                Console.WriteLine("{0,-3} {1,-20} {2,-10:C2} {3,-10}", (productIndex + 1), product.Name, product.Price, product.Quantity);
+                productIndex++;
+            }
 
             Console.Write("Type the product ID: ");
-            int.TryParse(Console.ReadLine(), out int productId);
+            int.TryParse(Console.ReadLine(), out int userProductIndexInput);
             Console.WriteLine();
-            Console.Write("How many? ");
-            int.TryParse(Console.ReadLine(), out int _productQuantity);
-            Console.WriteLine();
-
 
             try
             {
-                Console.WriteLine("You're buying this: ");
-                Console.WriteLine("{0,-3} {1,-20} {2,-10} {3,-10}", "ID", "Name", "Price", "Quantity");
-                Console.WriteLine("{0,-3} {1,-20} {2,-10:C2} {3,-10}", vendingMachine.Products[productId - 1].Id, vendingMachine.Products[productId - 1].Name, vendingMachine.Products[productId - 1].Price, _productQuantity);
-                Console.WriteLine($"Total : {(vendingMachine.Products[productId - 1].Price * _productQuantity):C2}");
-                Console.WriteLine();
-                vendingMachine.UpdateProductQuantity(productId, _productQuantity);
-                vendingMachine.AddBalance(-(vendingMachine.Products[productId - 1].Price * _productQuantity));
+                vendingMachine.SellItem(userProductIndexInput - 1);
             }
             catch (IndexOutOfRangeException)
             {
                 Console.WriteLine("Item ID doesn't exist.");
                 Console.WriteLine();
-            }
-            catch (ArgumentOutOfRangeException)
-            {
-                Console.WriteLine("Item quantity should be greater than 0 and less of equal than total quantity.");
             }
         }
         public static void GiveChange(Machine vendingMachine)
