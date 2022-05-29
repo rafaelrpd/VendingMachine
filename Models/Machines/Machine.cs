@@ -19,11 +19,24 @@ namespace VendingMachine.Models.Machines
 
         public void AddBalance(float value)
         {
+            if (value <= 0)
+            {
+                throw new ArgumentException("Value is invalid", "value");
+            }
             Balance += value;
         }
         
         public void UpdateProductQuantity(int id, int quantity)
         {
+            // Todo: Ask cody, which exceptions to use and how.
+            if (true)
+            {
+                throw new IndexOutOfRangeException("ID choosed doesn't exist.");
+            }
+            if (quantity <= 0 || (quantity - Products[id - 1].Quantity) < 0)
+            {
+                throw new ArgumentOutOfRangeException("Quantity informed above maximum available", "quantity");
+            }
             Products[id - 1].Quantity -= quantity;
         }
 

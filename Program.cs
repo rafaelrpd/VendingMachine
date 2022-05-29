@@ -8,7 +8,6 @@ namespace VendingMachine
         static void Main(string[] args)
         {
             int menuShowCounter = 0;
-            int addMenuShowCounter = 0;
             int sellMenuShowCounter = 0;
             Machine vendingMachine = new Machine();
             ShowMenu(menuShowCounter, vendingMachine);
@@ -22,24 +21,22 @@ namespace VendingMachine
                 switch (_menuSelection)
                 {
                     case 1:
-                        AddMoney(addMenuShowCounter, vendingMachine);
-                        Console.Clear();
+                        AddMoney(vendingMachine);
                         ShowMenu(menuShowCounter, vendingMachine);
                         break;
                     case 2:
                         SellItem(sellMenuShowCounter, vendingMachine);
-                        Console.Clear();
                         ShowMenu(menuShowCounter, vendingMachine);
                         break;
                     case 3:
                         GiveChange(vendingMachine);
-                        Console.Clear();
                         ShowMenu(menuShowCounter, vendingMachine);
                         break;
                     default:
                         exit = true;
                         if (vendingMachine.Balance != 0)
                         {
+                            // Todo: Doesn't work, because AddBalance only add and so, it just accept positive values.
                             GiveChange(vendingMachine);
                         }                        
                         break;
@@ -48,15 +45,11 @@ namespace VendingMachine
         }
         public static void ShowMenu(int menuShowCounter, Machine vendingMachine)
         {
-            if (menuShowCounter == 0)
-            {
-                Console.WriteLine("This is the vending maXXXine 2000 5.8 supercharger menu!");
-                Console.WriteLine("bip... bop...");
-                Console.WriteLine();
-                Console.WriteLine("This is my product list! Enjoy it!");
-                Console.WriteLine();
-                menuShowCounter++;
-            }
+            Console.WriteLine("This is the vending maXXXine 2000 5.8 supercharger menu!");
+            Console.WriteLine("bip... bop...");
+            Console.WriteLine();
+            Console.WriteLine("This is my product list! Enjoy it!");
+            Console.WriteLine();
             ListAllProducts(vendingMachine);
             ShowBalance(vendingMachine);
             Console.WriteLine("What you want to do?");
@@ -75,51 +68,42 @@ namespace VendingMachine
             Console.WriteLine($"Current balance: {vendingMachine.Balance:C2}");
             Console.WriteLine();
         }
-        public static void AddMoney(int addMenuShowCounter, Machine vendingMachine)
+        public static void AddMoney(Machine vendingMachine)
         {
-            if (addMenuShowCounter == 0)
+
+            Console.WriteLine("You can add the following as money:");
+            Console.WriteLine();
+            Console.Write("Coins of this value: ");
+            foreach (var coin in vendingMachine.Money)
             {
-                Console.Clear();
-                Console.WriteLine("You can add the following as money:");
-                Console.WriteLine();
-                Console.Write("Coins of this value: ");
-                foreach (var coin in vendingMachine.Money)
+                if (coin.GetType() == typeof(Coin))
                 {
-                    if (coin.GetType() == typeof(Coin))
-                    {
-                        Console.Write("{0:C2} ", coin._value);
-                    }
+                    Console.Write("{0:C2} ", coin._value);
                 }
-                Console.WriteLine();
-                Console.Write("Banknotes of this value: ");
-                vendingMachine.Money.ForEach(banknote =>
-                {
-                    if (banknote.GetType() == typeof(Banknote))
-                    {
-                        Console.Write("{0:C2} ", banknote._value);
-                    }
-                });
-                Console.WriteLine();
-                Console.WriteLine();
-                addMenuShowCounter++;
             }
+            Console.WriteLine();
+            Console.Write("Banknotes of this value: ");
+            vendingMachine.Money.ForEach(banknote =>
+            {
+                if (banknote.GetType() == typeof(Banknote))
+                {
+                    Console.Write("{0:C2} ", banknote._value);
+                }
+            });
+            Console.WriteLine();
+            Console.WriteLine();
+
             Console.Write("How much you want do deposit? ");
             float.TryParse(Console.ReadLine(), out float _userDepositValue);
-            vendingMachine.AddBalance(_userDepositValue);
             Console.WriteLine();
-            Console.WriteLine("--------------------------------------------------------");
-            Console.WriteLine($"Current balance: {vendingMachine.Balance:C2}");
-            Console.WriteLine();
-            Console.Write("Do you want to deposit more? Y/N ");
-            string _moreDeposits = Console.ReadLine().ToLower();
-            Console.WriteLine();
-            if (_moreDeposits == "y")
+            try
             {
-                AddMoney(addMenuShowCounter, vendingMachine);
+                vendingMachine.AddBalance(_userDepositValue);
             }
-            else if (_moreDeposits != "y")
+            catch (Exception)
             {
-                Console.WriteLine("Let's go back to Menu!!!");
+
+                Console.WriteLine("You can't deposit zeros, negative numbers or words");
                 Console.WriteLine();
             }
         }
@@ -128,7 +112,6 @@ namespace VendingMachine
         {
             if (sellMenuShowCounter == 0)
             {
-                Console.Clear();
                 Console.WriteLine("I'm selling all of this.");
                 Console.WriteLine();
                 sellMenuShowCounter++;
@@ -139,9 +122,28 @@ namespace VendingMachine
             Console.WriteLine();
             Console.WriteLine("{0,-3} {1,-20} {2,-10} {3,-10}", "ID", "Name", "Price", "Quantity");
             vendingMachine.Products.ForEach(product => Console.WriteLine("{0,-3} {1,-20} {2,-10:C2} {3,-10}", product.Id, product.Name, product.Price, product.Quantity));
-            Console.Write("Type the product ID: ");
-            int.TryParse(Console.ReadLine(), out int _productId);
-            Console.WriteLine();
+
+
+            int _productId;
+            while (true)
+            {
+                try
+                {
+                    // Todo: Ask cody, why this doesn't work as expected.
+                    Console.Write("Type the product ID: ");
+                    int.TryParse(Console.ReadLine(), out _productId);
+                    Console.WriteLine();
+                    break;
+                }
+                catch (IndexOutOfRangeException ex)
+                {
+                    Console.WriteLine(ex);
+                    continue;
+                }
+            }
+            
+            
+
             Console.Write("How many? ");
             int.TryParse(Console.ReadLine(), out int _productQuantity);
             Console.WriteLine();
@@ -152,6 +154,7 @@ namespace VendingMachine
             Console.WriteLine();
             vendingMachine.UpdateProductQuantity(_productId, _productQuantity);
             vendingMachine.AddBalance(-(vendingMachine.Products[_productId - 1].Price * _productQuantity));
+
             Console.Write("Do you want to buy more? Y/N ");
             string _buyMore = Console.ReadLine().ToLower();
             Console.WriteLine();
@@ -169,7 +172,6 @@ namespace VendingMachine
 
         public static void GiveChange(Machine vendingMachine)
         {
-            Console.Clear();
             Console.WriteLine("You don't need change! The change is mmmiiiinnneee!!!");
             Console.WriteLine("Muhuahuahua");
             Console.WriteLine("#ImEvil");
@@ -190,6 +192,7 @@ namespace VendingMachine
                 float.TryParse(Console.ReadLine(), out float _userTip);
                 Console.WriteLine($"You tipped the machine for {_userTip:C2}");
                 Console.WriteLine($"Your balance is now {(vendingMachine.Balance - _userTip):C2}.");
+                // Todo: Doesn't work, because AddBalance only add and so, it just accept positive values.
                 vendingMachine.AddBalance(-_userTip);
                 Console.WriteLine();
                 Console.WriteLine("Processing change...");
@@ -204,6 +207,7 @@ namespace VendingMachine
                 Console.WriteLine("It's legen... wait for it... dary!");
                 Console.WriteLine($"You got back all your money! {vendingMachine.Balance:C2}.");
                 Thread.Sleep(5000);
+                // Todo: Doesn't work, because AddBalance only add and so, it just accept positive values.
                 vendingMachine.AddBalance(-vendingMachine.Balance);
             }
         }
