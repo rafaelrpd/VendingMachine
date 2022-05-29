@@ -2,17 +2,17 @@
 {
     public class Product
     {
-        public int _id { get; set; }
-        public string _name { get; set; }
-        public float _price { get; set; }
-        public int _quantity { get; set; }
+        public int Id { get; set; }
+        public string Name { get; set; }
+        public float Price { get; set; }
+        public int Quantity { get; set; }
 
         public Product(int id, string name, float price, int quantity)
         {
-            _id = id;
-            _name = name;
-            _price = price;
-            _quantity = quantity;
+            Id = id;
+            Name = name;
+            Price = price;
+            Quantity = quantity;
         }
     }
 }

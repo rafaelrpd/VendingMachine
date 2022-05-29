@@ -109,11 +109,11 @@ namespace VendingMachine.Models.Machines
             Console.WriteLine();
             Console.WriteLine("You're buying this: ");
             Console.WriteLine("{0,-3} {1,-20} {2,-10} {3,-10}", "ID", "Name", "Price", "Quantity");
-            Console.WriteLine("{0,-3} {1,-20} {2,-10:C2} {3,-10}", Products[_productId - 1]._id, Products[_productId - 1]._name, Products[_productId - 1]._price, _productQuantity);
-            Console.WriteLine($"Total : {(Products[_productId - 1]._price * _productQuantity):C2}");
+            Console.WriteLine("{0,-3} {1,-20} {2,-10:C2} {3,-10}", Products[_productId - 1].Id, Products[_productId - 1].Name, Products[_productId - 1].Price, _productQuantity);
+            Console.WriteLine($"Total : {(Products[_productId - 1].Price * _productQuantity):C2}");
             Console.WriteLine();
-            Products[_productId - 1]._quantity -= _productQuantity;
-            Balance -= (Products[_productId - 1]._price * _productQuantity);
+            Products[_productId - 1].Quantity -= _productQuantity;
+            Balance -= (Products[_productId - 1].Price * _productQuantity);
             Console.Write("Do you want to buy more? Y/N ");
             string _buyMore = Console.ReadLine().ToLower();
             Console.WriteLine();
@@ -180,7 +180,7 @@ namespace VendingMachine.Models.Machines
         private void ListAllProducts()
         {
             Console.WriteLine("{0,-3} {1,-20} {2,-10} {3,-10}", "ID", "Name", "Price", "Quantity");
-            Products.ForEach(product => Console.WriteLine("{0,-3} {1,-20} {2,-10:C2} {3,-10}", product._id, product._name, product._price, product._quantity));
+            Products.ForEach(product => Console.WriteLine("{0,-3} {1,-20} {2,-10:C2} {3,-10}", product.Id, product.Name, product.Price, product.Quantity));
             Console.WriteLine();
         }
 
