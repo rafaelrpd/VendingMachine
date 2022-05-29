@@ -7,8 +7,7 @@ namespace VendingMachine.Models.Machines
     {
         private List<Product> Products { get; set; }
         private float Balance { get; set; }
-        private List<Coin> Coins { get; set; }
-        private List<Banknote> Banknotes { get; set; }
+        private List<IMoney> Money { get; set; }
         private int MenuShowCounter { get; set; }
         private int AddMenuShowCounter { get; set; }
         private int SellMenuShowCounter { get; set; }
@@ -17,8 +16,7 @@ namespace VendingMachine.Models.Machines
         {
             Products = new List<Product>();
             Balance = 0;
-            Coins = new List<Coin>();
-            Banknotes = new List<Banknote>();
+            Money = new List<IMoney>();
             MenuShowCounter = 0;
             AddMenuShowCounter = 0;
             SellMenuShowCounter = 0;
@@ -50,10 +48,22 @@ namespace VendingMachine.Models.Machines
                 Console.WriteLine("You can add the following as money:");
                 Console.WriteLine();
                 Console.Write("Coins of this value: ");
-                Coins.ForEach(coin => Console.Write("{0:C2} ", coin._value));
+                foreach (var coin in Money)
+                {
+                    if (coin.GetType() == typeof(Coin))
+                    {
+                        Console.Write("{0:C2} ", coin._value);
+                    }
+                }
                 Console.WriteLine();
                 Console.Write("Banknotes of this value: ");
-                Banknotes.ForEach(banknote => Console.Write("{0:C2} ", banknote._value));
+                Money.ForEach(banknote =>
+                {
+                    if (banknote.GetType() == typeof(Banknote))
+                    {
+                        Console.Write("{0:C2} ", banknote._value);
+                    }
+                });
                 Console.WriteLine();
                 Console.WriteLine();
                 AddMenuShowCounter++;
@@ -184,17 +194,11 @@ namespace VendingMachine.Models.Machines
             Products.Add(new Product(5, "coke 350ml", 5.50f, 10, "R$"));
 
             // Add all coins and cash notes possible as payment
-            Coins.Add(new Coin(0.25f));
-            Coins.Add(new Coin(0.50f));
-            Coins.Add(new Coin(1.00f));
-            Coins.Add(new Coin(2.00f));
-            Banknotes.Add(new Banknote(2.00f));
-            Banknotes.Add(new Banknote(5.00f));
-            Banknotes.Add(new Banknote(10.00f));
-            Banknotes.Add(new Banknote(25.00f));
-            Banknotes.Add(new Banknote(50.00f));
-            Banknotes.Add(new Banknote(100.00f));
-            Banknotes.Add(new Banknote(200.00f));
+            IMoney[] coinArray = { new Coin(0.25f), new Coin(0.50f), new Coin(1.00f), new Coin(2.00f) };
+            Money.AddRange(coinArray);
+
+            IMoney[] banknoteArray = { new Banknote(2.00f), new Banknote(5.00f), new Banknote(10.00f), new Banknote(25.00f), new Banknote(50.00f), new Banknote(100.00f), new Banknote(200.00f) };
+            Money.AddRange(banknoteArray);
         }
     }
 }
