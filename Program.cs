@@ -7,30 +7,25 @@ namespace VendingMachine
     {
         static void Main(string[] args)
         {
-            int menuShowCounter = 0;
             int sellMenuShowCounter = 0;
             Machine vendingMachine = new Machine();
-            ShowMenu(menuShowCounter, vendingMachine);
 
             bool exit = false;
             while(!exit)
             {
-                
+                ShowMenu(vendingMachine);
                 int.TryParse(Console.ReadLine(), out int _menuSelection);
 
                 switch (_menuSelection)
                 {
                     case 1:
                         AddMoney(vendingMachine);
-                        ShowMenu(menuShowCounter, vendingMachine);
                         break;
                     case 2:
                         SellItem(sellMenuShowCounter, vendingMachine);
-                        ShowMenu(menuShowCounter, vendingMachine);
                         break;
                     case 3:
                         GiveChange(vendingMachine);
-                        ShowMenu(menuShowCounter, vendingMachine);
                         break;
                     default:
                         exit = true;
@@ -43,7 +38,7 @@ namespace VendingMachine
                 }
             }
         }
-        public static void ShowMenu(int menuShowCounter, Machine vendingMachine)
+        public static void ShowMenu(Machine vendingMachine)
         {
             Console.WriteLine("This is the vending maXXXine 2000 5.8 supercharger menu!");
             Console.WriteLine("bip... bop...");
@@ -103,7 +98,7 @@ namespace VendingMachine
             catch (Exception)
             {
 
-                Console.WriteLine("You can't deposit zeros, negative numbers or words");
+                Console.WriteLine("You can't deposit no values, zeros, negative numbers or words");
                 Console.WriteLine();
             }
         }
