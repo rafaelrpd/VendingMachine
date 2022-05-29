@@ -17,7 +17,7 @@ namespace VendingMachine.Models.Machines
             SetupMachine();
         }
 
-        public void UpdateBalance(float value)
+        public void AddBalance(float value)
         {
             Balance += value;
         }
