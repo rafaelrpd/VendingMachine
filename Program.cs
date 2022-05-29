@@ -150,7 +150,7 @@ namespace VendingMachine
             Console.WriteLine("{0,-3} {1,-20} {2,-10:C2} {3,-10}", vendingMachine.Products[_productId - 1].Id, vendingMachine.Products[_productId - 1].Name, vendingMachine.Products[_productId - 1].Price, _productQuantity);
             Console.WriteLine($"Total : {(vendingMachine.Products[_productId - 1].Price * _productQuantity):C2}");
             Console.WriteLine();
-            vendingMachine.Products[_productId - 1].Quantity -= _productQuantity;
+            vendingMachine.UpdateProductQuantity(_productId, _productQuantity);
             vendingMachine.UpdateBalance(-(vendingMachine.Products[_productId - 1].Price * _productQuantity));
             Console.Write("Do you want to buy more? Y/N ");
             string _buyMore = Console.ReadLine().ToLower();

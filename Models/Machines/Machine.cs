@@ -21,6 +21,12 @@ namespace VendingMachine.Models.Machines
         {
             Balance += value;
         }
+        
+        public void UpdateProductQuantity(int id, int quantity)
+        {
+            Products[id - 1].Quantity -= quantity;
+        }
+
         private void SetupMachine()
         {
             // Add first products
