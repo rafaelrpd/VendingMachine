@@ -22,17 +22,10 @@ namespace VendingMachine
                         break;
                     case 2:
                         SellItem(vendingMachine);
-                        break;
-                    case 3:
-                        GiveChange(vendingMachine);
+                        vendingMachine.GiveChange();
                         break;
                     default:
-                        exit = true;
-                        if (vendingMachine.Balance != 0)
-                        {
-                            // Todo: Doesn't work, because AddBalance only add and so, it just accept positive values.
-                            GiveChange(vendingMachine);
-                        }                        
+                        exit = true;                     
                         break;
                 }
             }
@@ -47,7 +40,7 @@ namespace VendingMachine
             ListAllProducts(vendingMachine);
             ShowBalance(vendingMachine);
             Console.WriteLine("What you want to do?");
-            Console.WriteLine($"1 - Add money\n2 - Buy item\n3 - Get change\n4 - Exit");
+            Console.WriteLine($"1 - Add money\n2 - Buy iteme\n3 - Exit");
             Console.WriteLine();
         }
         public static void ListAllProducts(Machine vendingMachine)
@@ -140,47 +133,6 @@ namespace VendingMachine
             {
                 Console.WriteLine("Not enough money to buy. Please add money first.");
                 Console.WriteLine();
-            }
-        }
-        public static void GiveChange(Machine vendingMachine)
-        {
-            Console.WriteLine("You don't need change! The change is mmmiiiinnneee!!!");
-            Console.WriteLine("Muhuahuahua");
-            Console.WriteLine("#ImEvil");
-            Console.WriteLine("You don't need change, right?");
-            Console.WriteLine("Right? ...");
-            Console.WriteLine("Come on! You know how's this days! I need to feed my family!");
-            Console.WriteLine("Fine... fine...");
-            Console.WriteLine($"You have {vendingMachine.Balance:C2}.");
-            Console.WriteLine("At least give me a tip!");
-            Console.WriteLine();
-            Console.WriteLine();
-            Console.Write("Do you want to give a tip? Y/N ");
-            string _userSelection = Console.ReadLine().ToLower();
-            Console.WriteLine();
-            if (_userSelection == "y")
-            {
-                Console.WriteLine("How much you will tip?");
-                float.TryParse(Console.ReadLine(), out float _userTip);
-                Console.WriteLine($"You tipped the machine for {_userTip:C2}");
-                Console.WriteLine($"Your balance is now {(vendingMachine.Balance - _userTip):C2}.");
-                // Todo: Doesn't work, because AddBalance only add and so, it just accept positive values.
-                vendingMachine.AddBalance(-_userTip);
-                Console.WriteLine();
-                Console.WriteLine("Processing change...");
-                Console.WriteLine("It's legen... wait for it... dary!");
-                Console.WriteLine($"You got back all your money! {vendingMachine.Balance:C2}.");
-                Thread.Sleep(5000);
-                vendingMachine.AddBalance(-vendingMachine.Balance);
-            }
-            else
-            {
-                Console.WriteLine("Processing change...");
-                Console.WriteLine("It's legen... wait for it... dary!");
-                Console.WriteLine($"You got back all your money! {vendingMachine.Balance:C2}.");
-                Thread.Sleep(5000);
-                // Todo: Doesn't work, because AddBalance only add and so, it just accept positive values.
-                vendingMachine.AddBalance(-vendingMachine.Balance);
             }
         }
     }

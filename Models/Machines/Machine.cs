@@ -25,6 +25,13 @@ namespace VendingMachine.Models.Machines
             }
             Balance += value;
         }
+        public void GiveChange()
+        {
+            Console.WriteLine($"There's your change: {Balance:C2}");
+            Console.WriteLine("Have a nice day!");
+            Console.WriteLine();
+            Balance = 0;
+        }
         
         public void SellItem(int index)
         {
