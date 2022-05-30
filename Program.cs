@@ -136,6 +136,11 @@ namespace VendingMachine
                 Console.WriteLine("Item ID doesn't exist.");
                 Console.WriteLine();
             }
+            catch (ArgumentException)
+            {
+                Console.WriteLine("Not enough money to buy. Please add money first.");
+                Console.WriteLine();
+            }
         }
         public static void GiveChange(Machine vendingMachine)
         {

@@ -28,6 +28,10 @@ namespace VendingMachine.Models.Machines
         
         public void SellItem(int index)
         {
+            if (Balance < Products[index].Price)
+            {
+                throw new ArgumentException("Not enough balance to buy item.");
+            }
             if (Products.ElementAtOrDefault(index) == null)
             {
                 throw new IndexOutOfRangeException("Index choosed doesn't exist.");
