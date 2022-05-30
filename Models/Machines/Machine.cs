@@ -37,6 +37,7 @@ namespace VendingMachine.Models.Machines
                 throw new IndexOutOfRangeException("Index choosed doesn't exist.");
             }
             Products[index].Quantity -= 1;
+            Balance -= Products[index].Price;
             if (Products[index].Quantity <= 0)
             {
                 Products.RemoveAt(index);
