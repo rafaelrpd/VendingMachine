@@ -1,3 +1,3 @@
 # VendingMachine
 
-Vending machine made with C# to study interfaces.
+Vending machine made with C# to study.
