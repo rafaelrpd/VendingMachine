@@ -1,0 +1,27 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="VendingMachineLib\**" />
+    <Compile Remove="WebApp\**" />
+    <EmbeddedResource Remove="VendingMachineLib\**" />
+    <EmbeddedResource Remove="WebApp\**" />
+    <None Remove="VendingMachineLib\**" />
+    <None Remove="WebApp\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="_FutureUse\Utils.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="_FutureUse\Utils.cs" />
+  </ItemGroup>
+
+</Project>
