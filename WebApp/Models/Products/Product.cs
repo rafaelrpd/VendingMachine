@@ -5,15 +5,17 @@ namespace WebApp.Models.Products
 {
     public class Product
     {
-        public int Id { get; set; }
+        [Key]
+        public int ProductId { get; set; }
 
         [Required]
-        public string Name { get; set; } = string.Empty;
+        [RegularExpression(@"^[A-Z]+[a-zA-Z0-9""'\s-]*$")]
+        public string ProductName { get; set; } = string.Empty;
 
         [DataType(DataType.Currency)]
         [Column(TypeName = "decimal(18, 2)")]
-        public decimal Price { get; set; }
+        public decimal ProductPrice { get; set; }
 
-        public int Quantity { get; set; }
+        public int ProductQuantity { get; set; }
     }
 }
