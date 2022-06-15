@@ -1,21 +1,7 @@
-﻿using VendingMachine.WebApp.Models;
-
-
-namespace VendingMachine.WebApp.Models
+﻿namespace WebApp
 {
-    internal class Machine
+    public class machine
     {
-        public List<Product> Products { get; private set; }
-        public float Balance { get; private set; }
-        public List<IMoney> Money { get; private set; }
-
-        public Machine()
-        {
-            Products = new List<Product>();
-            Balance = 0;
-            Money = new List<IMoney>();
-            SetupMachine();
-        }
 
         public void AddBalance(float value)
         {
@@ -32,7 +18,7 @@ namespace VendingMachine.WebApp.Models
             Console.WriteLine();
             Balance = 0;
         }
-        
+
         public void SellItem(int index)
         {
             if (Balance < Products[index].Price)
@@ -67,5 +53,10 @@ namespace VendingMachine.WebApp.Models
             IMoney[] banknoteArray = { new Banknote(2.00f), new Banknote(5.00f), new Banknote(10.00f), new Banknote(25.00f), new Banknote(50.00f), new Banknote(100.00f), new Banknote(200.00f) };
             Money.AddRange(banknoteArray);
         }
+    }
+
+    public class money
+    {
+
     }
 }
