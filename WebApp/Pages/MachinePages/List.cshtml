@@ -1,0 +1,40 @@
+﻿@page
+@model WebApp.Pages.MachinePages.ListModel
+@{
+    ViewData["Title"] = "List All";
+}
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.machine.MachineId)</th>
+            <th>@Html.DisplayNameFor(model => model.machine.MachineName)</th>
+            <th>@Html.DisplayNameFor(model => model.machine.MachineBalance)</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>@Html.DisplayFor(model => model.machine.MachineId)</td>
+            <td>@Html.DisplayFor(model => model.machine.MachineName)</td>
+            <td>@Html.DisplayFor(model => model.machine.MachineBalance)</td>
+        </tr>
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.machine.MachineProductList)</th>
+        </tr>
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.machine.MachineProductList[0].ProductId)</th>
+            <th>@Html.DisplayNameFor(model => model.machine.MachineProductList[0].ProductName)</th>
+            <th>@Html.DisplayNameFor(model => model.machine.MachineProductList[0].ProductPrice)</th>
+            <th>@Html.DisplayNameFor(model => model.machine.MachineProductList[0].ProductQuantity)</th>
+        </tr>
+@foreach (var product in Model.machine.MachineProductList)
+{
+        <tr>
+            <th>@Html.DisplayFor(productItem => product.ProductId)</th>
+            <th>@Html.DisplayFor(productItem => product.ProductName)</th>
+            <th>@Html.DisplayFor(productItem => product.ProductPrice)</th>
+            <th>@Html.DisplayFor(productItem => product.ProductQuantity)</th>
+        </tr>
+}
+    </tbody>
+</table>
