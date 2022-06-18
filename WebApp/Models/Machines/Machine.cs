@@ -8,16 +8,20 @@ namespace WebApp.Models.Machines
     public class Machine
     {
         [Key]
+        [Display(Name ="Machine ID")]
         public int MachineId { get; set; }
 
         [Required]
         [RegularExpression(@"^[A-Z]+[a-zA-Z0-9""'\s-]*$")]
+        [Display(Name = "Machine Name")]
         public string MachineName { get; set; } = string.Empty;
 
         [DataType(DataType.Currency)]
         [Column(TypeName = "decimal(18, 2)")]
+        [Display(Name = "Machine Balance")]
         public decimal MachineBalance { get; set; } = decimal.Zero;
 
+        [Display(Name = "Machine Product List")]
         public List<Product> MachineProductList { get; set; } = default!;
     }
 }
