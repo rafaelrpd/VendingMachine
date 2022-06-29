@@ -4,37 +4,58 @@
     ViewData["Title"] = "List All";
 }
 
-<table class="table">
+@for (int i = 0; i < Model.machine.Count; i++)
+{
+<table class="table table-striped table-bordered w-auto">
     <thead>
         <tr>
-            <th>@Html.DisplayNameFor(model => model.machine.MachineId)</th>
-            <th>@Html.DisplayNameFor(model => model.machine.MachineName)</th>
-            <th>@Html.DisplayNameFor(model => model.machine.MachineBalance)</th>
+            <th scope="col">Machine ID</th>
+            <th scope="col">Machine Name</th>
+            <th scope="col">Machine Balance</th>
         </tr>
     </thead>
-    <tbody>
+    <tbody class="table-group-divider">
         <tr>
-            <td>@Html.DisplayFor(model => model.machine.MachineId)</td>
-            <td>@Html.DisplayFor(model => model.machine.MachineName)</td>
-            <td>@Html.DisplayFor(model => model.machine.MachineBalance)</td>
+            <th data-bs-toggle="tooltip" data-bs-placement="top" title="Click to show products.">
+                <button 
+                    class="btn btn-primary" 
+                    type="button" 
+                    data-bs-toggle="collapse" 
+                    data-bs-target="#machine-@Model.machine[i].MachineId" 
+                    aria-expanded="false" 
+                    aria-controls="machine-@Model.machine[i].MachineId">
+                @Model.machine[i].MachineId
+                </button>
+            </th>
+            <td>@Model.machine[i].MachineName</td>
+            <td>@Model.machine[i].MachineBalance.ToString("C")</td>
         </tr>
         <tr>
-            <th>@Html.DisplayNameFor(model => model.machine.MachineProductList)</th>
+            <td colspan="3">
+                <table class="table table-striped table-bordered w-auto collapse caption-top table-hover" id="machine-@Model.machine[i].MachineId">
+                    <caption class="text-center w-auto fs-6 fw-bold">Product List</caption>
+                    <thead>
+                        <tr>   
+                            <th class="col">Product ID</th>
+                            <th class="col">Product Name</th>
+                            <th class="col">Product Price</th>
+                            <th class="col">Product Quantity</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @for (int j = 0; j < Model.machine[i].MachineProductList.Count; j++)
+                        {
+                        <tr>
+                            <th>@Model.machine[i].MachineProductList[j].ProductId</th>
+                            <td>@Model.machine[i].MachineProductList[j].ProductName</td>
+                            <td>@Model.machine[i].MachineProductList[j].ProductPrice.ToString("C")</td>
+                            <td>@Model.machine[i].MachineProductList[j].ProductQuantity</td>
+                        </tr>
+                        }
+                    </tbody>
+                </table>
+            </td>
         </tr>
-        <tr>
-            <th>@Html.DisplayNameFor(model => model.machine.MachineProductList[0].ProductId)</th>
-            <th>@Html.DisplayNameFor(model => model.machine.MachineProductList[0].ProductName)</th>
-            <th>@Html.DisplayNameFor(model => model.machine.MachineProductList[0].ProductPrice)</th>
-            <th>@Html.DisplayNameFor(model => model.machine.MachineProductList[0].ProductQuantity)</th>
-        </tr>
-@foreach (var product in Model.machine.MachineProductList)
-{
-        <tr>
-            <th>@Html.DisplayFor(productItem => product.ProductId)</th>
-            <th>@Html.DisplayFor(productItem => product.ProductName)</th>
-            <th>@Html.DisplayFor(productItem => product.ProductPrice)</th>
-            <th>@Html.DisplayFor(productItem => product.ProductQuantity)</th>
-        </tr>
-}
     </tbody>
 </table>
+}

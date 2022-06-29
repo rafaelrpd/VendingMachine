@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using WebApp.Models;
+using WebApp.Data;
 using WebApp.Models.Machines;
 
 namespace WebApp.Pages.MachinePages
@@ -13,7 +13,7 @@ namespace WebApp.Pages.MachinePages
             _logger = logger;
         }
 
-        public Machine machine { get; set; } = SeedData.Initialize();
+        public List<Machine> machine = SeedData.ListView();
         public void OnGet()
         {
         }
