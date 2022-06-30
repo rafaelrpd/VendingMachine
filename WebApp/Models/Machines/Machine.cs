@@ -8,8 +8,8 @@ namespace WebApp.Models.Machines
     public class Machine
     {
         [Key]
-        [Display(Name ="Machine ID")]
-        public int MachineId { get; set; }
+        [Display(Name = "Machine ID")]
+        public int MachineId { get; set; } = default!;
 
         [Required]
         [RegularExpression(@"^[A-Z]+[a-zA-Z0-9""'\s-]*$")]
