@@ -7,12 +7,12 @@ namespace WebApp.Models.Machines
 {
     public class Machine
     {
-        //[Key]
+        [Key]
         [Display(Name = "Machine ID")]
         public Guid MachineId { get; set; } = Guid.NewGuid();
 
-        [Required]
-        [RegularExpression(@"^[A-Z]+[a-zA-Z0-9""'\s-]*$")]
+        //[Required]
+        //[RegularExpression(@"^[A-Z]+[a-zA-Z0-9""'\s-]*$")]
         [Display(Name = "Machine Name")]
         public string MachineName { get; set; } = string.Empty;
 

@@ -9,17 +9,17 @@ namespace WebApp.Models.Products
         [Display(Name = "Product ID")]
         public Guid ProductId { get; set; } = Guid.NewGuid();
 
-        [Required]
-        [RegularExpression(@"^[A-Z]+[a-zA-Z0-9""'\s-]*$")]
+        //[Required]
+        //[RegularExpression(@"^[A-Z]+[a-zA-Z0-9""'\s-]*$")]
         [Display(Name = "Product Name")]
         public string ProductName { get; set; } = string.Empty;
 
         //[DataType(DataType.Currency)]
         //[Column(TypeName = "decimal(18, 2)")]
         [Display(Name = "Product Price")]
-        public decimal ProductPrice { get; set; }
+        public decimal ProductPrice { get; set; } = decimal.Zero;
 
         [Display(Name = "Product Quantity")]
-        public int ProductQuantity { get; set; }
+        public int ProductQuantity { get; set; } = default!;
     }
 }
