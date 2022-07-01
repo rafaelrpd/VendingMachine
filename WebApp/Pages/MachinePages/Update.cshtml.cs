@@ -9,10 +9,10 @@ namespace WebApp.Pages.MachinePages
     {
         private readonly List<Machine> Machines = SharedData.MachineList;
 
-        [BindProperty(SupportsGet = true)]
+        [BindProperty]
         public Guid Id { get; set; }
 
-        [BindProperty(SupportsGet = true)]
+        [BindProperty]
         public Machine FormMachine { get; set; }
 
         public IActionResult OnGet(Guid? Id)
