@@ -13,14 +13,16 @@ namespace WebApp.Pages.MachinePages
 
         }
 
+        public int ProductCount { get; set; } = 3;
+
         [BindProperty]
         public Machine FormMachine { get; set; } = default!;
 
+
         public RedirectToPageResult OnPost()
         {
-            FormMachine.MachineId = SharedData.MachineList.LastOrDefault() == null ? 0 : SharedData.MachineList.Last().MachineId + 1;
-            FormMachine.MachineProductList = new List<Product> { };
             SharedData.MachineList.Add(FormMachine);
+            SharedData.ProductList.AddRange(FormMachine.MachineProductList);
             return RedirectToPage("./List");
         }
     }
