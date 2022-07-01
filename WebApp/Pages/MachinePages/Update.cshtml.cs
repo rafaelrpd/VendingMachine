@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using WebApp.Data.Shared;
 using WebApp.Models.Machines;
+using System.Linq;
 
 namespace WebApp.Pages.MachinePages
 {
@@ -38,7 +39,19 @@ namespace WebApp.Pages.MachinePages
             SharedData.MachineList.First(m => m.MachineId.Equals(Id)).MachineName = FormMachine.MachineName;
             SharedData.MachineList.First(m => m.MachineId.Equals(Id)).MachineBalance = FormMachine.MachineBalance;
             SharedData.MachineList.First(m => m.MachineId.Equals(Id)).MachineProductList = FormMachine.MachineProductList;
-            SharedData.ProductList.AddRange(FormMachine.MachineProductList);
+            var updatedProducts = 
+                from updateProduct in FormMachine.MachineProductList
+                from sharedProduct in SharedData.ProductList
+                where updateProduct.ProductId == sharedProduct.ProductId
+                select updateProduct;
+
+            foreach (var product in updatedProducts)
+            {
+                SharedData.ProductList.First(p => p.ProductId.Equals(product.ProductId)).ProductName = product.ProductName;
+                SharedData.ProductList.First(p => p.ProductId.Equals(product.ProductId)).ProductPrice = product.ProductPrice;
+                SharedData.ProductList.First(p => p.ProductId.Equals(product.ProductId)).ProductQuantity = product.ProductQuantity;
+
+            }
             return RedirectToPage("/MachinePages/List");
         }
     }
