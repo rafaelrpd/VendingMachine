@@ -7,15 +7,15 @@ namespace WebApp.Models.Products
     {
         [Key]
         [Display(Name = "Product ID")]
-        public int ProductId { get; set; }
+        public Guid ProductId { get; set; } = Guid.NewGuid();
 
         [Required]
         [RegularExpression(@"^[A-Z]+[a-zA-Z0-9""'\s-]*$")]
         [Display(Name = "Product Name")]
         public string ProductName { get; set; } = string.Empty;
 
-        [DataType(DataType.Currency)]
-        [Column(TypeName = "decimal(18, 2)")]
+        //[DataType(DataType.Currency)]
+        //[Column(TypeName = "decimal(18, 2)")]
         [Display(Name = "Product Price")]
         public decimal ProductPrice { get; set; }
 
