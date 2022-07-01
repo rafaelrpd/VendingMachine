@@ -14,7 +14,7 @@ namespace WebApp.Pages.MachinePages
             _logger = logger;
         }
 
-        public List<Machine> machine = SharedData.MachineList;
+        public List<Machine> Machine = SharedData.MachineList;
         public void OnGet()
         {
         }
