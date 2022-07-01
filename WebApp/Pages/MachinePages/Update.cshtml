@@ -12,23 +12,17 @@
 <div class="container">
     <div>
         <form method="post">
-            <div asp-validation-summary="All" class="text-danger"></div>
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <table class="table table-striped table-bordered table-hover w-auto">
                 <thead>
                     <tr>
-                        <th scope="col">Machine ID</th>
                         <th scope="col">Machine Name</th>
                         <th scope="col">Machine Balance</th>
                     </tr>
                 </thead>
                 <tbody class="table-group-divider">
                     <tr>
-                        <td>
-                            <div class="input-group">
-                                <input asp-for="FormMachine.MachineId" class="form-control" disabled readonly />
-                                <span asp-validation-for="FormMachine.MachineId" class="text-danger"></span>
-                            </div>
-                        </td>
+                        <input type="hidden" asp-for="FormMachine.MachineId" class="form-control" />
                         <td>
                             <div class="input-group">
                                 <input asp-for="FormMachine.MachineName" class="form-control" />
@@ -48,7 +42,6 @@
                                 <caption class="text-center w-auto fs-6 fw-bold">Product List</caption>
                                 <thead>
                                     <tr>
-                                        <th class="col">Product ID</th>
                                         <th class="col">Product Name</th>
                                         <th class="col">Product Price</th>
                                         <th class="col">Product Quantity</th>
@@ -59,12 +52,7 @@
                                     @for (int i = 0; i < Model.FormMachine.MachineProductList.Count; i++)
                                     {
                                     <tr>
-                                        <th>
-                                            <div class="input-group">
-                                                <input asp-for="FormMachine.MachineProductList[i].ProductId" class="form-control" disabled readonly />
-                                                <span asp-validation-for="FormMachine.MachineProductList[i].ProductId" class="text-danger"></span>
-                                            </div>
-                                        </th>
+                                        <input type="hidden" asp-for="FormMachine.MachineProductList[i].ProductId" class="form-control" />
                                         <td>
                                             <div class="input-group">
                                                 <input asp-for="FormMachine.MachineProductList[i].ProductName" class="form-control" />
