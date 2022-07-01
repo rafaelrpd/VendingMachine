@@ -16,7 +16,7 @@ namespace WebApp.Pages.MachinePages
         public int ProductCount { get; set; } = 3;
 
         [BindProperty]
-        public Machine FormMachine { get; set; } = default!;
+        public Machine FormMachine { get; set; }
 
 
         public RedirectToPageResult OnPost()
