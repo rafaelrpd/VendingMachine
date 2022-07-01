@@ -35,7 +35,6 @@ namespace WebApp.Pages.MachinePages
 
         public IActionResult OnPost()
         {
-            // TODO Solve problem with Guid from machine and product changing after each post.
             SharedData.MachineList.First(m => m.MachineId.Equals(Id)).MachineName = FormMachine.MachineName;
             SharedData.MachineList.First(m => m.MachineId.Equals(Id)).MachineBalance = FormMachine.MachineBalance;
             SharedData.MachineList.First(m => m.MachineId.Equals(Id)).MachineProductList = FormMachine.MachineProductList;
