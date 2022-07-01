@@ -1,4 +1,4 @@
-﻿@page "{id:Guid}"
+﻿@page "{Id:Guid}"
 @model WebApp.Pages.MachinePages.UpdateModel
 @{
     ViewData["Title"] = "Update";
@@ -61,7 +61,7 @@
                                     <tr>
                                         <th>
                                             <div class="input-group">
-                                                <input asp-for="FormMachine.MachineProductList[i].ProductId" class="form-control" />
+                                                <input asp-for="FormMachine.MachineProductList[i].ProductId" class="form-control" disabled readonly />
                                                 <span asp-validation-for="FormMachine.MachineProductList[i].ProductId" class="text-danger"></span>
                                             </div>
                                         </th>
