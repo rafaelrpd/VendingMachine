@@ -7,7 +7,7 @@ namespace WebApp.Models.Machines
 {
     public class Machine
     {
-        [Key]
+        //[Key]
         [Display(Name = "Machine ID")]
         public Guid MachineId { get; set; } = Guid.NewGuid();
 

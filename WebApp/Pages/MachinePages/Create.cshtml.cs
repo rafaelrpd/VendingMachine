@@ -23,7 +23,7 @@ namespace WebApp.Pages.MachinePages
         {
             SharedData.MachineList.Add(FormMachine);
             SharedData.ProductList.AddRange(FormMachine.MachineProductList);
-            return RedirectToPage("./List");
+            return RedirectToPage("/MachinePages/List");
         }
     }
 }

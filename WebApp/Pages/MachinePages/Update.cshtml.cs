@@ -19,13 +19,13 @@ namespace WebApp.Pages.MachinePages
         {
             if (Id == null || Machines == null)
             {
-                return Redirect("../List");
+                return Redirect("/MachinePages/List");
             }
 
             var machineExist = Machines.FirstOrDefault(m => m.MachineId.Equals(Id));
             if (machineExist == null)
             {
-                return Redirect("../List");
+                return Redirect("/MachinePages/List");
             }
 
             FormMachine = machineExist;
