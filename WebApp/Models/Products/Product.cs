@@ -17,7 +17,7 @@ namespace WebApp.Models.Products
         //[DataType(DataType.Currency)]
         //[Column(TypeName = "decimal(18, 2)")]
         [Display(Name = "Product Price")]
-        public decimal ProductPrice { get; set; } = decimal.Zero;
+        public decimal ProductPrice { get; set; } = 0.00m;
 
         [Display(Name = "Product Quantity")]
         public int ProductQuantity { get; set; } = default!;
