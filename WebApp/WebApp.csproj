@@ -30,8 +30,4 @@
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="6.0.6" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Pages\VendingMachinePages\Partials\" />
-  </ItemGroup>
-
 </Project>
