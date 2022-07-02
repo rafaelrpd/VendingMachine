@@ -33,24 +33,10 @@ namespace WebApp.Pages.MachinePages
             return Page();
         }
 
-        public IActionResult OnPost()
+        public IActionResult OnPost(Guid Id)
         {
-            SharedData.MachineList.First(m => m.MachineId.Equals(Id)).MachineName = FormMachine.MachineName;
-            SharedData.MachineList.First(m => m.MachineId.Equals(Id)).MachineBalance = FormMachine.MachineBalance;
-            SharedData.MachineList.First(m => m.MachineId.Equals(Id)).MachineProductList = FormMachine.MachineProductList;
-            var updatedProducts = 
-                from updateProduct in FormMachine.MachineProductList
-                from sharedProduct in SharedData.ProductList
-                where updateProduct.ProductId == sharedProduct.ProductId
-                select updateProduct;
-
-            foreach (var product in updatedProducts)
-            {
-                SharedData.ProductList.First(p => p.ProductId.Equals(product.ProductId)).ProductName = product.ProductName;
-                SharedData.ProductList.First(p => p.ProductId.Equals(product.ProductId)).ProductPrice = product.ProductPrice;
-                SharedData.ProductList.First(p => p.ProductId.Equals(product.ProductId)).ProductQuantity = product.ProductQuantity;
-
-            }
+            var _sharedDataMachineIndex = SharedData.MachineList.FindIndex(m => m.MachineId.Equals(Id));
+            SharedData.MachineList[_sharedDataMachineIndex] = FormMachine;
             return RedirectToPage("/MachinePages/List");
         }
     }
