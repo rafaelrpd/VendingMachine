@@ -50,10 +50,7 @@ namespace WebApp.Data
                     }
                 }
             };
-            //List<Machine> machineList = new List<Machine> { };
-            List<Product> productList = new List<Product> { };
             SharedData.MachineList = machineList;
-            SharedData.ProductList = productList;
         }
     }
 }
