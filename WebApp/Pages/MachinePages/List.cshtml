@@ -17,7 +17,7 @@
         </a>
     </div>
     <div class="row p-2">
-        <table class="table table-striped table-bordered m-auto">
+        <table class="table table-striped table-bordered w-auto m-auto">
             <thead>
                 <tr>
                     <th>Machine ID</th>
@@ -67,18 +67,9 @@
                 </tr>
                 <tr>
                     <td colspan="4">
-                        <table class="table table-sm table-striped table-bordered w-100 collapse collapse-horizontal caption-top table-hover" id="machine-@i">
+                        <table class="table table-sm table-striped table-bordered collapse collapse-horizontal caption-top table-hover" id="machine-@i">
                             <caption class="fs-6 fw-bold text-center">
                                 Product List
-                                <a 
-                                    class="btn btn-primary ms-auto col" 
-                                    role="button" 
-                                    data-bs-toggle="tooltip" 
-                                    data-bs-placement="top" 
-                                    title="Add new product." 
-                                    asp-page="/ProductPages/Create">
-                                    Add
-                                </a>
                             </caption>
                             <thead>
                                 <tr>
@@ -96,28 +87,6 @@
                                     <td>@Model.Machine[i].MachineProductList[j].ProductName</td>
                                     <td>@Model.Machine[i].MachineProductList[j].ProductPrice.ToString("C")</td>
                                     <td>@Model.Machine[i].MachineProductList[j].ProductQuantity</td>
-                                    @*<td class="text-end">
-                                        <a 
-                                            class="btn btn-primary" 
-                                            role="button" 
-                                            data-bs-toggle="tooltip" 
-                                            data-bs-placement="top" 
-                                            title="Update this product." 
-                                            asp-page="/ProductPages/Update" 
-                                            asp-route-id="@Model.Machine[i].MachineProductList[j].ProductId">
-                                            Update
-                                        </a>
-                                        <a 
-                                            class="btn btn-primary" 
-                                            role="button" 
-                                            data-bs-toggle="tooltip" 
-                                            data-bs-placement="top" 
-                                            title="Delete this product." 
-                                            asp-page="/ProductPages/Delete" 
-                                            asp-route-id="@Model.Machine[i].MachineProductList[j].ProductId">
-                                            Delete
-                                        </a>
-                                    </td>*@
                                 </tr> 
                             }
                             </tbody>
