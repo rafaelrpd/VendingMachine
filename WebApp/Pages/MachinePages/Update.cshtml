@@ -9,79 +9,38 @@
 <h4>Machine</h4>
 <hr />
 
-<div class="container">
-    <div>
+<div class="row">
+    <div class="col-6">
         <form method="post">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <table class="table table-striped table-bordered table-hover w-auto">
-                <thead>
-                    <tr>
-                        <th scope="col">Machine Name</th>
-                        <th scope="col">Machine Balance</th>
-                    </tr>
-                </thead>
-                <tbody class="table-group-divider">
-                    <tr>
-                        <input type="hidden" asp-for="FormMachine.MachineId" class="form-control" />
-                        <td>
-                            <div class="input-group">
-                                <input asp-for="FormMachine.MachineName" class="form-control" />
-                                <span asp-validation-for="FormMachine.MachineName" class="text-danger"></span>
-                            </div>
-                        </td>
-                        <td>
-                            <div class="input-group">
-                                <input asp-for="FormMachine.MachineBalance" class="form-control" />
-                                <span asp-validation-for="FormMachine.MachineBalance" class="text-danger"></span>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td colspan="3">
-                            <table class="table table-striped table-bordered w-auto table-hover caption-top">
-                                <caption class="text-center w-auto fs-6 fw-bold">Product List</caption>
-                                <thead>
-                                    <tr>
-                                        <th class="col">Product Name</th>
-                                        <th class="col">Product Price</th>
-                                        <th class="col">Product Quantity</th>
-                                        <th class="col">Actions</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    @for (int i = 0; i < Model.FormMachine.MachineProductList.Count; i++)
-                                    {
-                                    <tr>
-                                        <input type="hidden" asp-for="FormMachine.MachineProductList[i].ProductId" class="form-control" />
-                                        <td>
-                                            <div class="input-group">
-                                                <input asp-for="FormMachine.MachineProductList[i].ProductName" class="form-control" />
-                                                <span asp-validation-for="FormMachine.MachineProductList[i].ProductName" class="text-danger"></span>
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <input asp-for="FormMachine.MachineProductList[i].ProductPrice" class="form-control" />
-                                            <span asp-validation-for="FormMachine.MachineProductList[i].ProductPrice" class="text-danger"></span>
-                                        </td>
-                                        <td>
-                                            <input asp-for="FormMachine.MachineProductList[i].ProductQuantity" class="form-control" />
-                                            <span asp-validation-for="FormMachine.MachineProductList[i].ProductQuantity" class="text-danger"></span>
-                                        </td>
-                                    </tr>
-                                    }
-                                </tbody>
-                            </table>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-            <div class="input-group">
-                <button type="submit" class="btn btn-primary">Update</button>
+            <div class="form-floating mb-4 col">
+                <input type="hidden" asp-for="@Model.FormMachine.MachineId" class="form-control" />
+                <input asp-for="@Model.FormMachine.MachineName" class="form-control" />
+                <label asp-for="@Model.FormMachine.MachineName"></label>                
             </div>
+            @foreach (var product in Model.FormMachine.MachineProductList.Select((produto, index) => new { index, produto }))
+            {
+                <div class="row">
+                    <div class="form-floating mb-4 col">
+                        <input name="FormMachine.MachineProductList[@product.index].ProductName" value="@product.produto.ProductName" class="form-control" />
+                        <label asp-for="@product.produto.ProductName"></label>                
+                    </div>
+                    <div class="form-floating mb-4 col">
+                        <input name="FormMachine.MachineProductList[@product.index].ProductPrice" value="@product.produto.ProductPrice" class="form-control" />
+                        <label asp-for="@product.produto.ProductPrice"></label>                
+                    </div>
+                    <div class="form-floating mb-4 col">
+                        <input name="FormMachine.MachineProductList[@product.index].ProductQuantity" value="@product.produto.ProductQuantity" class="form-control" />
+                        <label asp-for="@product.produto.ProductQuantity"></label>                
+                    </div>
+                    <div class="my-2 col-2">
+                        <input type="hidden" name="FormMachine.MachineProductList[@product.index].ProductId" value="@product.produto.ProductId" class="form-control" />
+                        <button class="btn btn-danger" asp-page-handler="removeproduct" asp-route-index="@product.index">Remove</button>
+                    </div>
+                </div>
+            }
+            <button class="btn btn-success" asp-page-handler="">Update</button>
+            <button class="btn btn-primary" asp-page-handler="addproduct">Add Product</button>
         </form>
+        <a class="btn btn-secondary mt-2" asp-page="/MachinePages/List">Back to List</a>
     </div>
-</div>
-
-<div>
-    <a asp-page="/MachinePages/List">Back to List</a>
 </div>

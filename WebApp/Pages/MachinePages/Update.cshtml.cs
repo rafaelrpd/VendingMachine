@@ -2,7 +2,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using WebApp.Data.Shared;
 using WebApp.Models.Machines;
-using System.Linq;
+using WebApp.Models.Products;
 
 namespace WebApp.Pages.MachinePages
 {
@@ -11,10 +11,7 @@ namespace WebApp.Pages.MachinePages
         private readonly List<Machine> Machines = SharedData.MachineList;
 
         [BindProperty]
-        public Guid Id { get; set; }
-
-        [BindProperty]
-        public Machine FormMachine { get; set; }
+        public Machine FormMachine { get; set; } = default!;
 
         public IActionResult OnGet(Guid? Id)
         {
@@ -38,6 +35,16 @@ namespace WebApp.Pages.MachinePages
             var _sharedDataMachineIndex = SharedData.MachineList.FindIndex(m => m.MachineId.Equals(Id));
             SharedData.MachineList[_sharedDataMachineIndex] = FormMachine;
             return RedirectToPage("/MachinePages/List");
+        }
+
+        public void OnPostAddProduct()
+        {
+            FormMachine.MachineProductList.Add(new Product());
+        }
+
+        public void OnPostRemoveProduct(int index)
+        {
+            FormMachine.MachineProductList.RemoveAt(index);
         }
     }
 }
