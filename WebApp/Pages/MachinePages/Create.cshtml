@@ -17,29 +17,7 @@
                 <label asp-for="FormMachine.MachineName"></label>                
                 <span asp-validation-for="FormMachine.MachineName" class="text-danger"></span>
             </div>
-        @for (int i = 0; i < @Model.ProductCount; i++)
-        {   
-            <div class="row">
-                <div class="form-floating mb-4 col">
-                    <input asp-for="FormMachine.MachineProductList[i].ProductName" class="form-control" />
-                    <label asp-for="FormMachine.MachineProductList[i].ProductName"></label>                
-                    <span asp-validation-for="FormMachine.MachineProductList[i].ProductName" class="text-danger"></span>
-                </div>
-                <div class="form-floating mb-4 col">
-                    <input asp-for="FormMachine.MachineProductList[i].ProductPrice" class="form-control" />
-                    <label asp-for="FormMachine.MachineProductList[i].ProductPrice"></label>                
-                    <span asp-validation-for="FormMachine.MachineProductList[i].ProductPrice" class="text-danger"></span>
-                </div>
-                <div class="form-floating mb-4 col">
-                    <input asp-for="FormMachine.MachineProductList[i].ProductQuantity" class="form-control" />
-                    <label asp-for="FormMachine.MachineProductList[i].ProductQuantity"></label>                
-                    <span asp-validation-for="FormMachine.MachineProductList[i].ProductQuantity" class="text-danger"></span>
-                </div>
-            </div>
-        }
-            <div class="input-group">
-                <button type="submit" class="btn btn-primary">Create</button>
-            </div>
+            <button type="submit" class="btn btn-success">Create</button>
         </form>
     </div>
 </div>
@@ -47,7 +25,3 @@
 <div>
     <a asp-page="/MachinePages/List">Back to List</a>
 </div>
-
-@section Scripts {
-    
-}
