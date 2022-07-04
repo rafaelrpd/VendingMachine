@@ -2,6 +2,7 @@
 @model WebApp.Pages.MachinePages.ListModel
 @{
     ViewData["Title"] = "List All";
+    bool needRefill = false;
 }
 
 <div class="container">
@@ -25,6 +26,7 @@
                         <th>Name</th>
                         <th>Balance</th>
                         <th>Products</th>
+                        <th>Stock?</th>
                         <th>Actions</th>
                     </tr>
                 </thead>
@@ -39,6 +41,30 @@
                             <input type="hidden" asp-for="@Model.FormMachinesList[@machine.index].MachineBalance" class="form-control" />
                             <td>@machine.info.MachineBalance.ToString("C")</td>
                             <td>@machine.info.MachineProductList.Count()</td>
+                            <td>
+                                @if (machine.info.MachineProductList.Any())
+                                {
+                                    @foreach (var item in @Model.FormMachinesList[@machine.index].MachineProductList.Select((info, index) => new { index, info }))
+                                    {
+                                        @if (item.info.ProductQuantity == 0)
+                                        {
+                                            needRefill = true;
+                                        }
+                                    }
+                                    @if (needRefill)
+                                    {
+                                        <div>Need refill</div>
+                                    }
+                                    else
+                                    {
+                                        <div>In stock</div>
+                                    }
+                                }
+                                else
+                                {
+                                    <div>No products</div>
+                                }
+                            </td>
                             <td>
                                 <a 
                                     class="btn btn-primary" 
