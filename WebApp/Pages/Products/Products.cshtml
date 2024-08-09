@@ -1,0 +1,18 @@
+﻿@page "/Products"
+@model WebApp.Pages.Products.ProductsModel
+@{
+    ViewData["Title"] = "Products";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<ul>
+    @foreach (var product in Model.Products)
+    {
+        <li>
+            <strong>@product.Name</strong><br />
+            Price: @product.Price<br />
+            Quantity: @product.Quantity
+        </li>
+    }
+</ul>
