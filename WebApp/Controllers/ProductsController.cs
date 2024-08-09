@@ -37,7 +37,6 @@ namespace WebApp.Controllers
             }
 
             ViewData["Title"] = $"Details of {product.Name}";
-
             return View(product);
         }
 
