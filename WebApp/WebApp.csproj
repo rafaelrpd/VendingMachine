@@ -5,10 +5,6 @@
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Remove="code_to_refactore.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="code_to_refactore.cs" />
     <None Include="Pages\Error.cshtml" />
     <None Include="Pages\Index.cshtml" />
     <None Include="Pages\Privacy.cshtml" />
