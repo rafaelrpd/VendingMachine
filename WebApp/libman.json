@@ -1,14 +1,10 @@
 {
   "version": "1.0",
-  "defaultProvider": "cdnjs",
+  "defaultProvider": "unpkg",
   "libraries": [
     {
-      "library": "bootstrap@5.2.0-beta1",
+      "library": "bootstrap@5.3.3",
       "destination": "wwwroot/lib/bootstrap/"
-    },
-    {
-      "library": "bootstrap-icons@1.8.3",
-      "destination": "wwwroot/lib/bootstrap-icons/"
     }
   ]
 }

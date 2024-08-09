@@ -1,6 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using WebApp.Data;
 
 namespace WebApp.Pages
 {
@@ -15,7 +14,7 @@ namespace WebApp.Pages
 
         public void OnGet()
         {
-            SeedData.Initialize();
+
         }
     }
 }
