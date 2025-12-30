@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.EntityFrameworkCore;
-using WebApp.Models;
+﻿using Microsoft.EntityFrameworkCore;
+using WebApp.Domain.Models;
 
 namespace WebApp.Data
 {
@@ -14,6 +10,6 @@ namespace WebApp.Data
         {
         }
 
-        public virtual DbSet<WebApp.Models.Product> Product { get; set; } = default!;
+        public virtual DbSet<Product> Product { get; set; } = default!;
     }
 }
