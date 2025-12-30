@@ -1,9 +1,8 @@
-﻿using System;
+﻿#nullable disable
+
 using Microsoft.EntityFrameworkCore.Migrations;
 
-#nullable disable
-
-namespace WebApp.Migrations
+namespace WebApp.Context.Migrations
 {
     /// <inheritdoc />
     public partial class AddCreatedDateToProduct : Migration

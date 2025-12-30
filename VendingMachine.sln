@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 18
-VisualStudioVersion = 18.3.11312.210 d18.3
+VisualStudioVersion = 18.3.11312.210
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApp", "WebApp\WebApp.csproj", "{80359E79-CE60-4019-A281-1A81192BD8A2}"
 EndProject
@@ -10,6 +10,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApp.Services", "WebApp.Services\WebApp.Services.csproj", "{445FB50E-90C4-4FAA-8825-879F08428028}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApp.Domain", "WebApp.Domain\WebApp.Domain.csproj", "{F2263365-3A2C-4326-9BFF-D38F1C8E0B3B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApp.Context", "WebApp.Context\WebApp.Context.csproj", "{58221E89-B251-4630-B91F-F056688D700C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -69,6 +71,18 @@ Global
 		{F2263365-3A2C-4326-9BFF-D38F1C8E0B3B}.Release|x64.Build.0 = Release|Any CPU
 		{F2263365-3A2C-4326-9BFF-D38F1C8E0B3B}.Release|x86.ActiveCfg = Release|Any CPU
 		{F2263365-3A2C-4326-9BFF-D38F1C8E0B3B}.Release|x86.Build.0 = Release|Any CPU
+		{58221E89-B251-4630-B91F-F056688D700C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{58221E89-B251-4630-B91F-F056688D700C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{58221E89-B251-4630-B91F-F056688D700C}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{58221E89-B251-4630-B91F-F056688D700C}.Debug|x64.Build.0 = Debug|Any CPU
+		{58221E89-B251-4630-B91F-F056688D700C}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{58221E89-B251-4630-B91F-F056688D700C}.Debug|x86.Build.0 = Debug|Any CPU
+		{58221E89-B251-4630-B91F-F056688D700C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{58221E89-B251-4630-B91F-F056688D700C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{58221E89-B251-4630-B91F-F056688D700C}.Release|x64.ActiveCfg = Release|Any CPU
+		{58221E89-B251-4630-B91F-F056688D700C}.Release|x64.Build.0 = Release|Any CPU
+		{58221E89-B251-4630-B91F-F056688D700C}.Release|x86.ActiveCfg = Release|Any CPU
+		{58221E89-B251-4630-B91F-F056688D700C}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

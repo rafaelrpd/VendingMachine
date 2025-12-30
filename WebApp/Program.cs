@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.DependencyInjection;
 using WebApp.Data;
+
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDbContext<WebAppContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("WebAppContext") ?? throw new InvalidOperationException("Connection string 'WebAppContext' not found.")));
