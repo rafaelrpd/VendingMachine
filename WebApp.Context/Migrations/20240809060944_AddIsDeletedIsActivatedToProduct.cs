@@ -1,8 +1,8 @@
-﻿using Microsoft.EntityFrameworkCore.Migrations;
+﻿#nullable disable
 
-#nullable disable
+using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace WebApp.Migrations
+namespace WebApp.Context.Migrations
 {
     /// <inheritdoc />
     public partial class AddIsDeletedIsActivatedToProduct : Migration
