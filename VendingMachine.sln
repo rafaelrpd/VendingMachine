@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApp.Domain", "WebApp.Dom
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApp.Context", "WebApp.Context\WebApp.Context.csproj", "{58221E89-B251-4630-B91F-F056688D700C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApp.Repository", "WebApp.Repository\WebApp.Repository.csproj", "{52FE66F0-2069-4BB9-B592-DF50FF3E09FA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -83,6 +85,18 @@ Global
 		{58221E89-B251-4630-B91F-F056688D700C}.Release|x64.Build.0 = Release|Any CPU
 		{58221E89-B251-4630-B91F-F056688D700C}.Release|x86.ActiveCfg = Release|Any CPU
 		{58221E89-B251-4630-B91F-F056688D700C}.Release|x86.Build.0 = Release|Any CPU
+		{52FE66F0-2069-4BB9-B592-DF50FF3E09FA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{52FE66F0-2069-4BB9-B592-DF50FF3E09FA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{52FE66F0-2069-4BB9-B592-DF50FF3E09FA}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{52FE66F0-2069-4BB9-B592-DF50FF3E09FA}.Debug|x64.Build.0 = Debug|Any CPU
+		{52FE66F0-2069-4BB9-B592-DF50FF3E09FA}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{52FE66F0-2069-4BB9-B592-DF50FF3E09FA}.Debug|x86.Build.0 = Debug|Any CPU
+		{52FE66F0-2069-4BB9-B592-DF50FF3E09FA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{52FE66F0-2069-4BB9-B592-DF50FF3E09FA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{52FE66F0-2069-4BB9-B592-DF50FF3E09FA}.Release|x64.ActiveCfg = Release|Any CPU
+		{52FE66F0-2069-4BB9-B592-DF50FF3E09FA}.Release|x64.Build.0 = Release|Any CPU
+		{52FE66F0-2069-4BB9-B592-DF50FF3E09FA}.Release|x86.ActiveCfg = Release|Any CPU
+		{52FE66F0-2069-4BB9-B592-DF50FF3E09FA}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

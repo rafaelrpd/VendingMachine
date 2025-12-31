@@ -7,13 +7,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Contracts\" />
-    <Folder Include="Implementations\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\WebApp.Domain\WebApp.Domain.csproj" />
-    <ProjectReference Include="..\WebApp.Repository\WebApp.Repository.csproj" />
+    <ProjectReference Include="..\WebApp.Context\WebApp.Context.csproj" />
   </ItemGroup>
 
 </Project>
