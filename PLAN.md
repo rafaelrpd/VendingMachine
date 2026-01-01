@@ -249,7 +249,7 @@ A UI deve orientar o usuário a:
 
 ---
 
-Milestone 3 — Cashbox & Change Calculation
+### Milestone 3 — Cashbox & Change Calculation
 - `Cashbox`
 - `ChangeCalculator`
 - modo A/B
