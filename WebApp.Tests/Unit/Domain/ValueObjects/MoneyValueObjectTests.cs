@@ -311,9 +311,11 @@ public class MoneyValueObjectTests
     [Fact]
     public void Money_GetHashCode_WhenValuesAreEqual_ReturnsSameHashCode()
     {
+        // Arrange
         var m1 = new Money(10.00m);
         var m2 = new Money(10.00m);
 
+        // Act & Assert
         Assert.Equal(m1.GetHashCode(), m2.GetHashCode());
     }
 
